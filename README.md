@@ -20,9 +20,13 @@ When loading `mk-cpts.scm`, load it alongside `trs2-impl.scm`. You can see an ex
 Replace any `defrel`s in your miniKanren code with `defrel-optimized`. Or, if you prefer, run `apply-cpts` directly in your editor (using something like [sexp-rewrite](https://github.com/rmculpepper/sexp-rewrite)).
 
 # Future improvements to this codebase
+## Features
+* More CPTs, such as removing redundant goals.
+* Support for `=/=`.
+
+## Code quality
 * Algorithmic improvements.
 * Rewrite instances of `letrec*` where `let` would do fine. Same for `equal?` to `eqv?`, `eq?`.
-* Support for `=/=`.
 * Rewrite `syntax-rules` to not use `eval`.
 * Turn top-level definitions into local definitions, where possible, to clean up the namespace.
 * Maybe even remove instances of `pmatch`.
