@@ -1,4 +1,4 @@
-# miniKanren with correctness-preserving transformations: `mk-cpts.scm`
+# Correctness-preserving transformations for miniKanren: `mk-cpts.scm`
 
 Defines the following:
 * The macro `defrel-optimized`. Equivalent to `defrel` from The Reasoned Schemer 2nd ed. (https://github.com/TheReasonedSchemer2ndEd/CodeFromTheReasonedSchemer2ndEd/blob/master/trs2-impl.scm). Only supports `fresh`, `conde`, and `==`. It does not support `=/=` or constructs from the host language, e.g., `define`, `lambda`, and forms of `let`.
