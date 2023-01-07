@@ -8,8 +8,8 @@ Currently, `apply-cpts` only performs two steps:
 1. `single-fresh`, which rewrites the `defrel` to use one top-level `fresh` statement. Assumes unique names were given to the fresh variables.
 2. `optimize-condes`, which greedily extracts out the relation that appears in the most conde branches. It recurses until no more relations can be extracted.
 
-It relies on the following nonstandard Scheme constructs:
-* Pattern matching from pmatch.scm (Oleg Kiselyov, https://github.com/webyrd/quines/blob/master/pmatch.scm)
+This codebase relies on the following nonstandard Scheme constructs:
+* Pattern matching from `pmatch.scm` (Oleg Kiselyov, https://github.com/webyrd/quines/blob/master/pmatch.scm)
 * One occurence of `(gensym)` from Chez Scheme (https://www.scheme.com/csug6/objects.html)
 
 # How to use `mk-cpts.scm`
@@ -30,4 +30,4 @@ Replace any `defrel`s in your miniKanren code with `defrel-optimized`. Or, if yo
 * Rewrite `syntax-rules` to not use `eval`.
 * Turn top-level definitions into local definitions, where possible, to clean up the namespace.
 * Maybe even remove instances of `pmatch`.
-* Convert the type signatures (comments) into Typed Racket. Maybe even make a full Racket implementation.
+* Use Typed Racket types in the comments rather than Haskell types. Maybe even make a full Racket implementation.
