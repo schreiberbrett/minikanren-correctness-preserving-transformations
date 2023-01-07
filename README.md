@@ -2,10 +2,11 @@
 
 Defines the following:
 * The macro `defrel-optimized`. Equivalent to `defrel` from The Reasoned Schemer 2nd ed. (https://github.com/TheReasonedSchemer2ndEd/CodeFromTheReasonedSchemer2ndEd/blob/master/trs2-impl.scm). Only supports `fresh`, `conde`, and `==`. It does not support `=/=` or constructs from the host language, e.g., `define`, `lambda`, and forms of `let`.
-* The function `optimize-conde` which takes a quoted `conde` clause and performs this greedy divide-and-conquer algorithm:
-1. Find the most *frequent* relation, i.e., one that appears in the most `conde` clauses. Only consider relations that appear in at least 2 clauses.
-2. Partition the clauses into those that contain the relation, and those that do not. Extract the relation.
-3. Recur on both partitions until there are no more shared relations.
+* The function `apply-cpts` which takes a quoted `defrel` as argument.
+
+Currently, `apply-cpts` only performs two steps:
+1. `single-fresh`, which rewrites the `defrel` to use one top-level `fresh` statement. Assumes unique names were given to the fresh variables.
+2. `optimize-condes`, which greedily extracts out the relation that appears in the most conde branches. It recurses until no more relations can be extracted.
 
 It relies on the following nonstandard Scheme constructs:
 * Pattern matching from pmatch.scm (Oleg Kiselyov, https://github.com/webyrd/quines/blob/master/pmatch.scm)
@@ -15,6 +16,8 @@ It relies on the following nonstandard Scheme constructs:
 Have a copy of `pmatch.scm` in your home directory, `~/pmatch.scm`.
 
 When loading `mk-cpts.scm`, load it alongside `trs2-impl.scm`. You can see an example of this in [test.scm](test.scm).
+
+Replace any `defrel`s in your miniKanren code with `defrel-optimized`. Or, if you prefer, run `apply-cpts` directly in your editor (using something like [sexp-rewrite](https://github.com/rmculpepper/sexp-rewrite)).
 
 # Future improvements to this codebase
 * Algorithmic improvements.

@@ -9,15 +9,15 @@
                 (arg-list (list 'args ...))
                 (body-list (list 'body ...)))
 
-            (eval (perform-cpts `(defrel (name args ...) . (body ...))))))))
+            (eval (apply-cpts `(defrel (name args ...) . (body ...))))))))
 
 
 ;; Correctness-preserving transformations
 ;; --------------------------------------
 
-;; perform-cpts : Defrel -> Defrel
+;; apply-cpts : Defrel -> Defrel
 ;; Performs all correctness-preserving transformations in a productive order.
-(define (perform-cpts d)
+(define (apply-cpts d)
     (optimize-condes
     (single-fresh
         d)))

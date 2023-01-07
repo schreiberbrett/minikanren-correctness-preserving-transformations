@@ -2,7 +2,7 @@
 (load "~/CodeFromTheReasonedSchemer2ndEd/trs2-impl.scm")
 
 ;; Dummy defrels to test the CPTs against. Right now they are checked by hand. The use of (gensym) made it difficult for me to check the output programatically.
-;; usage: (optimize-condes test-case-xyz)
+;; usage: (apply-cpts test-case-xyz)
 
 ;; P(x) ∨ P(y) ⇒ ∃α.(α≡x ∨ α≡y) ∧ P(α)
 (define test-case-1
