@@ -23,4 +23,4 @@ When loading `mk-cpts.scm`, load it alongside `trs2-impl.scm`. You can see an ex
 * Rewrite `syntax-rules` to not use `eval`.
 * Turn top-level definitions into local definitions, where possible, to clean up the namespace.
 * Maybe even remove instances of `pmatch`.
-* Convert the type signatures (comments) into Typed Racket. Or even make a Racket implementation altogether
+* Convert the type signatures (comments) into Typed Racket. Maybe even make a full Racket implementation.
